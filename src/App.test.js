@@ -2,8 +2,14 @@ import React from "react";
 import { render } from "@testing-library/react";
 import App from "./App";
 
-test("renders hello world", () => {
+test("renders Input", () => {
+  const { getByPlaceholderText } = render(<App />);
+  const inputElement = getByPlaceholderText(/Start typing/);
+  expect(inputElement).toBeInTheDocument();
+});
+
+test("renders MessageBox", () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/hello world!/i);
-  expect(linkElement).toBeInTheDocument();
+  const messageBoxElement = getByText(/Last key pressed was:/);
+  expect(messageBoxElement).toBeInTheDocument();
 });
